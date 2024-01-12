@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class DTOMapper {
 
-    public DTORoom roomToDTORoom(Room room){
+    private DTORoom roomToDTORoom(Room room){
         return new DTORoom(room.getRoomName(),room.getHouseFloor(),room.getRoomWidth(), room.getRoomLength());
     }
 
@@ -21,6 +21,17 @@ public class DTOMapper {
         }
         return null;
     }
+
+    public List<DTORoom> listOfDTORoom(ArrayList<Room> listOfRooms){
+        ArrayList<DTORoom> dtoRoomsList = new ArrayList<>();
+        for(Room singleRoom : listOfRooms){
+            dtoRoomsList.add(roomToDTORoom(singleRoom));
+        }
+        return dtoRoomsList;
+    }
+
+
+    //____________________________________________________________________________________________________
 
 
     public SensorTypeDTO sensorTypeToDTOSensorType(SensorType sensorType){
@@ -35,14 +46,6 @@ public class DTOMapper {
             }
         }
         return null;
-    }
-
-    public List<DTORoom> listOfDTORoom(ArrayList<Room> listOfRooms){
-        ArrayList<DTORoom> dtoRoomsList = new ArrayList<>();
-        for(Room singleRoom : listOfRooms){
-            dtoRoomsList.add(roomToDTORoom(singleRoom));
-        }
-        return dtoRoomsList;
     }
 
     public List<SensorTypeDTO> listOfDTOSensorTypes(ArrayList<SensorType> sensorTypeList){

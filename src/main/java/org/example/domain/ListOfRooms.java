@@ -16,52 +16,38 @@ public class ListOfRooms {
     }
 
     public int addOutdoorRoomToList(Room room) throws InstantiationException {
-        Room inputRoom = getRoomFromList(room.getRoomName());
-        if (inputRoom == null) {
-            roomList.add(inputRoom);
-            return 1;
-        } else {
-            return -99;
+        if(!roomList.contains(room)){
+            roomList.add(room);
+                return 1;
         }
+        return -99;
     }
 
 
-    /**
-     * Receives a string name
-     * @param roomName Room
-     * @return Object Room;
-     */
-    private Room getRoomFromList(String roomName){
-        Room r = null;
-        for (Room singleRoom : roomList){
-            if(singleRoom.getRoomName().equals(roomName)){
-                r = singleRoom;
-                break;
+    public ArrayList<Room> getClonedRoomList()  {
+        try {
+            ArrayList<Room> roomNameList = new ArrayList<>();
+            for(Room singleRoom : this.roomList){
+                Room room = new Room(singleRoom.getRoomName(),singleRoom.getHouseFloor(),singleRoom.getRoomWidth(),singleRoom.getRoomLength());
+                roomNameList.add(room);
             }
+            return roomNameList;
+        }catch (InstantiationException e){
+            return null;
         }
-        return r;
-    }
 
-    public ArrayList<Room> getClonedRoomList() throws InstantiationException {
-
-        ArrayList<Room> roomNameList = new ArrayList<>();
-        for(Room singleRoom : this.roomList){
-           Room room = new Room(singleRoom.getRoomName(),singleRoom.getHouseFloor(),singleRoom.getRoomWidth(),singleRoom.getRoomLength());
-           roomNameList.add(room);
-        }
-        return roomNameList;
     }
 
     public ArrayList<Room> getRoomList()  {
         return roomList;
     }
 
-    public int addSensorToRoom(String roomName,String sensorName,SensorType sensorType){
-        Room room = getRoomFromList(roomName);
+    public int addSensorToRoom(Room room,SensorType sensorType,String sensorName){
         if(room == null){
             return -99;
         }
-        if(room.addSensorToSensorList(sensorName,sensorType)){
+        Sensor newSensor = room.createSensor(sensorName,sensorType);
+        if(room.addSensorToSensorList(newSensor)){
                 return 1;
         }
         return -2;

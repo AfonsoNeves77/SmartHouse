@@ -53,8 +53,12 @@ public class Room {
      * @param sensorType Sensor type (functionality);
      */
 
-    protected boolean addSensorToSensorList(String sensorName, SensorType sensorType){
-        return sensorList.addSensorToSensorList(sensorName,sensorType);
+    protected boolean addSensorToSensorList(Sensor sensor){
+        return sensorList.addSensorToSensorList(sensor);
+    }
+
+    protected Sensor createSensor(String sensorName, SensorType sensorType){
+        return new Sensor(sensorName, sensorType);
     }
 
     /**

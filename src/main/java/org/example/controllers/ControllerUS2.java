@@ -1,16 +1,18 @@
 package org.example.controllers;
-
+import org.example.DTOs.DTORoom;
 import org.example.domain.House;
-import org.example.domain.ListOfRooms;
 import org.example.domain.Room;
 
 public class ControllerUS2 {
 
-    public int addRoomOutdoorToHouse(House house, String roomName, int houseFloor, double roomWidth, double roomLength){
+    public int addRoomOutdoorToHouse(House house, DTORoom dtoRoom){
         try {
-            Room r = house.getListOfRoomsObj().createRoom(roomName, houseFloor, roomWidth,roomLength);
-            house.getListOfRoomsObj().addOutdoorRoomToList(r);
-            return 1;
+
+            //Cria um quarto e insere na lista :)
+            Room r = house.getListOfRoomsObj().createRoom(dtoRoom.getRoomName(), dtoRoom.getHouseFloor(), dtoRoom.getRoomWidth(),dtoRoom.getRoomLength());
+            return house.getListOfRoomsObj().addOutdoorRoomToList(r);
+
+
         }catch (InstantiationException instantiationException){
             return -2;
         }

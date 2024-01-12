@@ -3,6 +3,7 @@ package org.example;
 import org.example.DTOs.DTORoom;
 import org.example.controllers.ControllerUS2;
 import org.example.controllers.ControllerUS3;
+import org.example.controllers.ControllerUS4;
 import org.example.controllers.ControllerUS5;
 import org.example.domain.House;
 import org.example.domain.ListOfRooms;
@@ -15,23 +16,28 @@ public class Main {
 
         House myHouse = new House();
 
-        ArrayList<Room> LIS = myHouse.getListOfRoomsObj().getRoomList();
 
-        ListOfRooms a = myHouse.getListOfRoomsObj();
+        ControllerUS2 us2 = new ControllerUS2();
 
-        System.out.println(LIS);
-        System.out.println(a);
+        DTORoom dto = new DTORoom("Bedroom",80,90,9);
+        us2.addRoomOutdoorToHouse(myHouse,dto);
+
+        ControllerUS3 us3 = new ControllerUS3();
+        System.out.println(us3.retrieveListOfRooms(myHouse));
+
+        ControllerUS4 us4 = new ControllerUS4();
+        System.out.println(us4.defineSensorType(myHouse,"temperature"));
+        System.out.println(us4.defineSensorType(myHouse,"tempenmbmnrature"));
+        System.out.println(us4.defineSensorType(myHouse,"temperature"));
 
 
-        /*ControllerUS3 cus3 = new ControllerUS3();
-        ControllerUS5 cus5 = new ControllerUS5();
-        myHouse.getListOfSensorsTypes().addSensorTypeToList("Temperature");
-        myHouse.getListOfRoomsObj().addOutdoorRoomToList("Name",10,10,10);
-        System.out.println(cus3.retrieveListOfRooms(myHouse));
+        ControllerUS5 us5 = new ControllerUS5(myHouse);
+        System.out.println(us5.retrieveListOfRooms());
+        us5.chooseRoom(0,myHouse);
+        System.out.println(us5.retrieveSensorTypeList(myHouse));
+        us5.chooseSensorType(0,myHouse);
+        System.out.println(us5.addNewSensorToRoom(0,0,"MysENSOR"));
 
-        System.out.println(cus5.retrieveListOfRooms(myHouse));
-        cus5.chooseRoom(0,myHouse);
-        System.out.println(cus5.retrieveSensorTypeList(myHouse));*/
 
 
 

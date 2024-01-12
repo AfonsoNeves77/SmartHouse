@@ -9,20 +9,31 @@ public class ListOfSensorTypes {
         sensorTypeList = new ArrayList<>();
     }
 
-    public int addSensorTypeToList(String sensorType) throws InstantiationException {
-
-        SensorType inputSensorType = getSensorTypeFromList(sensorType);
-        //Sensor type may already exist in the list or not:
-        if (inputSensorType == null){
-            SensorType st = new SensorType(sensorType);
-            this.sensorTypeList.add(st);
-            return 1;
-        } else {
-           return 99;
+    public SensorType createSensorType(String functionality) {
+        try{
+            return new SensorType(functionality);
+        }
+        catch (InstantiationException e){
+            return null;
         }
     }
 
-    public SensorType getSensorTypeFromList(String inputSensorType){
+    public int addSensorTypeToList(SensorType sensorType) {
+        if(sensorType != null){
+            SensorType inputSensorType = getSensorTypeFromList(sensorType.getTypeOfSensorToString());
+            //Sensor type may already exist in the list or not:
+            if (inputSensorType == null){
+                this.sensorTypeList.add(sensorType);
+                return 1;
+            } else {
+                return 99;
+            }
+        }
+        return -999;
+
+    }
+
+    private SensorType getSensorTypeFromList(String inputSensorType){
         SensorType st = null;
         for (SensorType sensorType : sensorTypeList){
             if(sensorType.getTypeOfSensorToString().equals(inputSensorType.toUpperCase())){
@@ -35,14 +46,24 @@ public class ListOfSensorTypes {
     /**
      * @return List of sensor types with SensorType objects
      */
-    public ArrayList<SensorType> getClonedSensorTypeList() throws InstantiationException {
+    public ArrayList<SensorType> getClonedSensorTypeList() {
 
         ArrayList<SensorType> sensorTypeList = new ArrayList<>();
-        for(SensorType singleSensorType : this.sensorTypeList){
-           SensorType sensorTypeCloned = new SensorType(singleSensorType.getTypeOfSensorToString());
-            sensorTypeList.add(sensorTypeCloned);
+
+        try {
+            for(SensorType singleSensorType : this.sensorTypeList){
+                SensorType sensorTypeCloned = new SensorType(singleSensorType.getTypeOfSensorToString());
+                sensorTypeList.add(sensorTypeCloned);
+            }
+
+            return sensorTypeList;
+        }catch (InstantiationException e){
+            return null;
         }
-        return sensorTypeList;
+
     }
 
+    public ArrayList<SensorType> getSensorTypeList() {
+        return sensorTypeList;
+    }
 }

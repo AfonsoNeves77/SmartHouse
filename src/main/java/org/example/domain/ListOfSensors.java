@@ -10,10 +10,11 @@ public class ListOfSensors {
 
     }
 
-    protected boolean addSensorToSensorList(String sensorName, SensorType sensorType){
-        Sensor addedSensor = new Sensor(sensorName, sensorType);
-        if(!doesSensorExistInRoom(addedSensor)){
-            this.sensorList.add(addedSensor);
+
+
+    protected boolean addSensorToSensorList(Sensor sensor){
+        if(!sensorExistInRoom(sensor)){
+            this.sensorList.add(sensor);
             return true;
         } else {
             return false;
@@ -25,14 +26,8 @@ public class ListOfSensors {
      * @param sensor Sensor name
      * @return True or false
      */
-    private boolean doesSensorExistInRoom(Sensor sensor){
-        String sensorName = sensor.getSensorName();
-        for(Sensor singleSensor : sensorList){
-            if(singleSensor.getSensorName().equals(sensorName)){
-                return true;
-            }
-        }
-        return false;
+    private boolean sensorExistInRoom(Sensor sensor){
+        return this.sensorList.contains(sensor);
     }
 
 

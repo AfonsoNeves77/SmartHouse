@@ -11,11 +11,14 @@ public class ListOfRooms {
 
     }
 
-    public int addOutdoorRoomToList(String roomName, int houseFloor, double roomWidth, double roomLength) throws InstantiationException {
-        Room inputRoom = getRoomFromList(roomName);
+    public Room createRoom(String roomName, int houseFloor, double roomWidth, double roomLength) throws InstantiationException {
+        return new Room(roomName,houseFloor,roomWidth,roomLength);
+    }
+
+    public int addOutdoorRoomToList(Room room) throws InstantiationException {
+        Room inputRoom = getRoomFromList(room.getRoomName());
         if (inputRoom == null) {
-            Room newRoom = new Room(roomName, houseFloor, roomWidth, roomLength);
-            roomList.add(newRoom);
+            roomList.add(inputRoom);
             return 1;
         } else {
             return -99;

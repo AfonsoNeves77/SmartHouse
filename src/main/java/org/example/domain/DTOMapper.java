@@ -13,10 +13,6 @@ public class DTOMapper {
         return new DTORoom(room.getRoomName(),room.getHouseFloor(),room.getRoomWidth(), room.getRoomLength());
     }
 
-    public SensorTypeDTO sensorTypeToDTOSensorType(SensorType sensorType){
-        return new SensorTypeDTO(sensorType.getTypeOfSensorToString());
-    }
-
     public Room dtoRoomToRoom(ArrayList<Room> listOfRooms, DTORoom room){
         for(Room singleRoom : listOfRooms){
             if(Objects.equals(room.getRoomName(), singleRoom.getRoomName())){
@@ -25,6 +21,12 @@ public class DTOMapper {
         }
         return null;
     }
+
+
+    public SensorTypeDTO sensorTypeToDTOSensorType(SensorType sensorType){
+        return new SensorTypeDTO(sensorType.getTypeOfSensorToString());
+    }
+
 
     public SensorType dtoSensorTypeToSensorType(ArrayList<SensorType> listOfSensorTypes, SensorTypeDTO sensorTypeDTO){
         for(SensorType sensorType : listOfSensorTypes){

@@ -1,7 +1,6 @@
 package org.example.controllers;
 
-import org.example.domain.House;
-import org.example.domain.Location;
+import org.example.domain.House;;
 
 public class ControllerUS1 {
 

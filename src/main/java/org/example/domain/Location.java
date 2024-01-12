@@ -1,5 +1,7 @@
 package org.example.domain;
 
+import java.util.Objects;
+
 public class Location {
     private String doorReference;
     private String buildingNumber;
@@ -8,11 +10,6 @@ public class Location {
     private String country;
     private String zipCode;
     private String geoLocation;
-
-    /* We could eventually try to get the geoLocation using the address only
-    https://developers.google.com/maps/documentation/geocoding/start
-     */
-
     /**
      * Constructor for Location with Null parameters.
      */

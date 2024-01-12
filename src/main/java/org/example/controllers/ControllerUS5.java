@@ -38,8 +38,8 @@ public class ControllerUS5 {
 
 
 
-    public int addNewSensorToRoom(House home, String sensorName, SensorType sensorType){
+   /* public int addNewSensorToRoom(House home, String sensorName, SensorType sensorType){
         Room myRoom = dtoMapper.dtoRoomToRoom(home.getListOfRoomsObj().getRoomList(),this.room);
-        SensorType mySensorType = dtoMapper.dtoSensorTypeToSensorType()
-    }
+        SensorType mySensorType = dtoMapper.dtoSensorTypeToSensorType();
+    }*/
 }

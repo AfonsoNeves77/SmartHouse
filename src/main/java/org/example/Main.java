@@ -36,7 +36,7 @@ public class Main {
         us5.chooseRoom(0,myHouse);
         System.out.println(us5.retrieveSensorTypeList(myHouse));
         us5.chooseSensorType(0,myHouse);
-        System.out.println(us5.addNewSensorToRoom(0,0,"MysENSOR"));
+        //System.out.println(us5.addNewSensorToRoom(0,0,"MysENSOR"));
 
 
 

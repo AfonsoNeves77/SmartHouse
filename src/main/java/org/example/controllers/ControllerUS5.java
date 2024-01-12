@@ -41,11 +41,11 @@ public class ControllerUS5 {
         this.sensorTypeDTO = retrieveSensorTypeList(home).get(index);
     }
 
-   /*public int addNewSensorToRoom(House home,String sensorName){
+   public int addNewSensorToRoom(House home,String sensorName){
         Room myRoom = dtoMapper.dtoRoomToRoom(home.getListOfRoomsObj().getRoomList(),this.room);
         SensorType mySensorType = dtoMapper.dtoSensorTypeToSensorType(home.getListOfSensorsTypes().getSensorTypeList(),this.sensorTypeDTO);
         return home.getListOfRoomsObj().addSensorToRoom(myRoom,mySensorType,sensorName);
-    }*/
+    }
 
 
     /*public int addNewSensorToRoom(int indexRoom,int indexSensorType, String sensorName){
@@ -54,9 +54,9 @@ public class ControllerUS5 {
         return this.home.getListOfRoomsObj().addSensorToRoom(room1,mySensorType,sensorName);
     }*/
 
-    public int addNewSensorToRoom(DTORoom room,SensorTypeDTO sensorTypeDTO, String sensorName){
+    /*public int addNewSensorToRoom(DTORoom room,SensorTypeDTO sensorTypeDTO, String sensorName){
         Room room1 = this.home.getListOfRoomsObj().getRoomList().get(indexRoom);
         SensorType mySensorType = this.home.getListOfSensorsTypes().getSensorTypeList().get(indexSensorType);
         return this.home.getListOfRoomsObj().addSensorToRoom(room1,mySensorType,sensorName);
-    }
+    }*/
 }
